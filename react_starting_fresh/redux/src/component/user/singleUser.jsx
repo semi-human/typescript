@@ -34,7 +34,7 @@ function SingleUser({user,onDelete}) {
           onClick={() => handleDelete(user.id)}>
             Delete User
         </button>
-        <Link to={`/users/update/${user.id}`}>
+        <Link  className= "update-link" to={`/users/update/${user.id}`}>
           <button 
             type="button"
             className="btn"

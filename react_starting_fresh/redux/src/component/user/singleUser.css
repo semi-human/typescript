@@ -22,7 +22,11 @@
 .card-container:hover{
     transform: scale(1.02);
 }
-.btn{
+.update-link{
+  text-decoration: none;
+}
+.btn {
+    width:100%;
     display:block;
     padding:7px;
     margin-top: 10px;

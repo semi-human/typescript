@@ -7,7 +7,6 @@ import UserList from '../userList/userList';
 import Footer from '../footer/footer';
 
 function UserContainerHooks() {
-  const [check,setCheck] = React.useState(true);
   const [usersAll , setUsersAll]  = React.useState([]);
   const [storedUser,setStoredUser] = React.useState(JSON.parse(localStorage.getItem("Users")));
   useEffect(()=>{
@@ -18,10 +17,14 @@ function UserContainerHooks() {
   const {isLoading,users,error,searchField} = useSelector((state)=>state);
 
   useEffect(()=>{
-   if(storedUser)
+   if(storedUser && Object.keys(storedUser).length !== 0)
    {
-    setUsersAll(users.filter(user=>user.id !== storedUser.id));
-    setDelUsers(users.filter(user=>user.id !== storedUser.id));
+    var userBefore = users.filter(user=>user.id !== storedUser.id);
+    console.log(userBefore);
+    userBefore.push(storedUser);
+    console.log(userBefore);
+    setUsersAll(userBefore);
+    setDelUsers(userBefore);
     
    }else{
     setUsersAll(users);
@@ -29,27 +32,7 @@ function UserContainerHooks() {
    }
   },[users])
   // console.log(usersAll);
-  if(storedUser)
-  {
-    usersAll.map(user => {
-      if(user.id === storedUser.id)
-       return usersAll
-      else if(user.id !== storedUser.id && check)
-        {
-          usersAll.push(storedUser);
-          setCheck(false);
-           if(check)
-              console.log("Hello"); 
-          console.log(usersAll);
-          return usersAll
-        }
-      else{
-        console.log("I am from");
-        console.log(usersAll);
-        return usersAll
-      }
-    })
-  }
+ 
   // console.log(usersAll);
 // console.log(usersAll);
 //   console.log(users);
@@ -63,6 +46,15 @@ function UserContainerHooks() {
   
   const handleDelete = id =>{
     console.log(id);
+   if(storedUser)
+   {
+    console.log('I am from loop');
+    if(id === storedUser.id)
+    {
+      localStorage.setItem("Users",JSON.stringify({}));
+    }
+   }
+
     filteredDeletedUsers = usersAll.filter(user => user.id !== id);
    
     // console.log(users);

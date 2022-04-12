@@ -11,8 +11,10 @@
     margin:auto;
 
 }
-
-nav a.active{
+nav {
+    display:flex;
+}
+nav a , a.active{
     text-decoration:none;
     font-weight: bold;
     color:white;
