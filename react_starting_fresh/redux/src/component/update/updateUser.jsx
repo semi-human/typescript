@@ -1,10 +1,10 @@
 import React,{ useState,useEffect} from 'react'
-import { useParams } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 import './updateUser.css';
-
+import { useNavigate } from "react-router-dom";
 
 
 toast.configure();
@@ -18,7 +18,7 @@ export const UpdateUser = () => {
   const [catchPhrase,setCatchPhrase] = useState("");
   const [bs,setBs] = useState("");
   const { id } = useParams();
-  
+  const navigate = useNavigate();
   console.log(id);
   useEffect(()=>{
  
@@ -83,6 +83,9 @@ const handleSubmit =(e) =>{
     .then((json) => console.log(json));
     localStorage.setItem("Users", JSON.stringify(user));
     toast.success('Successfully  Updated!',{position:toast.POSITION.TOP_CENTER  , autoClose:false})
+    setTimeout(()=>{
+      navigate('/users');
+    },2000)
   }else{
     toast.warn('Please fill up the fields to update',{position:toast.POSITION.TOP_CENTER});
     

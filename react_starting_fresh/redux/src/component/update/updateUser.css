@@ -11,7 +11,7 @@
     color:white;
     padding:40px;
     width:700px;
-    height:800px;
+    height:900px;
 }
 .info p input{
 
@@ -28,9 +28,10 @@
     background-color: grey;
 }
 .submit{
+    margin-top:50px;
     display:block;
     width:100%;
-    padding:12px 0px;
+    padding:15px 0px;
     font-size:1.1rem;
     background-color: rgb(11, 83, 218);
     color:white;

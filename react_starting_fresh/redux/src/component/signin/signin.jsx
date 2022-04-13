@@ -1,5 +1,5 @@
 import React,{useRef , useState , useEffect }from "react";
-import { Link ,Navigate } from "react-router-dom";
+import { Link ,Navigate, useNavigate } from "react-router-dom";
 import { faCheck , faTimes , faInfoCircle } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { toast } from 'react-toastify';
@@ -30,7 +30,8 @@ const Signin = ({setAuth}) => {
   //error and success
   const [errMsg,setErrMsg] = useState('');
   const [success,setSuccess] = useState(false);
-
+  
+  const naivgate = useNavigate();
   //useEffects
   useEffect(()=>{
       userRef.current.focus();
@@ -70,6 +71,10 @@ const Signin = ({setAuth}) => {
           localStorage.setItem('Auth',JSON.stringify(true));
           toast.success('User login successful',{position:toast.POSITION.TOP_CENTER});
             setSuccess(true);
+            localStorage.setItem('UserName',data.user[0].toUpperCase() + data.user.slice(1) );
+            setTimeout(()=>{
+                naivgate('/users');
+            },2000)
       }else{
           toast.warning('Wrong Credentials!');
           userData.some(user=>{
@@ -99,7 +104,7 @@ const Signin = ({setAuth}) => {
         {
             success ? (
               <section>
-                    <Navigate replace to="/users"/>)
+                   <h1>Loading...</h1>
               </section>
             ) :(
                 <section>

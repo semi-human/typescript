@@ -20,9 +20,7 @@ function App() {
     <div className="App">
       <Header  isAuthenticated={isAuthenticated} setAuth = {setAuth}/>
       <Routes>
-          <Route path='/' element ={<Homepage/>}/>
-         <Route path="users" element={<UserContainerHooks/>}/>
-
+          {isAuthenticated ? <Route path="users" element={<UserContainerHooks/>}/> :<Route path='/' element ={<Homepage/>}/>}
           <Route path='users/:id' element ={<ModalSingleUser/>}/>
           <Route path="users/update/:id" element={<UpdateUser/>}/>
           <Route path='/signup' element={<Signup/>}/>
