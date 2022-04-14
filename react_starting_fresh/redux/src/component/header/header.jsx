@@ -1,7 +1,7 @@
 import React,{useEffect} from 'react'
 import SearchBox from '../search/searchBox';
 import './header.css';
-import {NavLink} from 'react-router-dom';
+import {NavLink ,Link} from 'react-router-dom';
 function Header({isAuthenticated,setAuth}) {
    let userName = localStorage.getItem('UserName');
   const Logout = () =>{
@@ -11,19 +11,25 @@ function Header({isAuthenticated,setAuth}) {
   }
   return !isAuthenticated ?(
    <div className='header'>
+      <h1 className='banner'>
+              <Link to="/users" className='linked'>Monsters Rolodex</Link>
+       </h1>
        <nav>
-          <NavLink to='/signup'>Signup</NavLink>
-          <NavLink to='/signin'>Login</NavLink>
+          <NavLink to='/signup' className='nav-sign'>Signup</NavLink>
+          <NavLink to='/signin' className='nav-log'>Login</NavLink>
        </nav>
-       <h1 className='banner'>Monsters Rolodex</h1> 
+       
    </div>
   ) :(
     
       <div className='header'>
+          <h1 className='banner'>
+              <Link to="/users" className='linked'>Monsters Rolodex</Link>
+          </h1>
           <nav>
               <NavLink to='/users'>Users</NavLink>
           </nav>
-          <h1 className='banner'>Monsters Rolodex</h1>
+         
           <SearchBox placeholder="Enter a name"/>
            {userName !== '' ? `Hello ${userName}` : ''} 
           <nav>

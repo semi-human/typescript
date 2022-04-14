@@ -1,5 +1,5 @@
 import React,{useRef , useState , useEffect }from "react";
-import { Link ,Navigate, useNavigate } from "react-router-dom";
+import { Link , useNavigate } from "react-router-dom";
 import { faCheck , faTimes , faInfoCircle } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { toast } from 'react-toastify';
