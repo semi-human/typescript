@@ -9,10 +9,10 @@ function Header({isAuthenticated,setAuth}) {
     localStorage.setItem('Auth',JSON.stringify(false));
     localStorage.setItem('UserName','');
   }
-  return !isAuthenticated ?(
+  return !isAuthenticated ? (
    <div className='header'>
       <h1 className='banner'>
-              <Link to="/users" className='linked'>Monsters Rolodex</Link>
+              <Link to="/" className='linked'>Monsters Rolodex</Link>
        </h1>
        <nav>
           <NavLink to='/signup' className='nav-sign'>Signup</NavLink>
@@ -26,13 +26,11 @@ function Header({isAuthenticated,setAuth}) {
           <h1 className='banner'>
               <Link to="/users" className='linked'>Monsters Rolodex</Link>
           </h1>
-          <nav>
-              <NavLink to='/users'>Users</NavLink>
-          </nav>
-         
           <SearchBox placeholder="Enter a name"/>
-           {userName !== '' ? `Hello ${userName}` : ''} 
-          <nav>
+          
+          
+          <span className='user-name'>{userName !== '' ? `Hello ${userName}` : ''} </span>
+          <nav className='logged-out'>
               <NavLink to='/' onClick={Logout}>Logout</NavLink>
           </nav>
       </div>

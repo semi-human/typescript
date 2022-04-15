@@ -1,7 +1,17 @@
-.container{
+
+.outer-part{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+.outer-part h1{
+    margin-top: 15px;
+}
+.containers{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    
     align-items: center;
     min-height: 100vh; 
     padding: 1rem 0.5rem;

@@ -4,6 +4,7 @@ import { faCheck , faTimes , faInfoCircle } from "@fortawesome/free-solid-svg-ic
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { GiAnubis } from "react-icons/gi";
 import './signin.css';
 
 
@@ -100,7 +101,12 @@ const Signin = ({setAuth}) => {
       getDataFromLocal({user:user,pwd:pwd})
   }
   return (
-    <div className="container">
+   <>
+     <div className="outer-part">
+        <GiAnubis color='red' size='5rem'/>
+        <h1>Sign in to MR</h1>
+     </div>
+     <div className="containers">
         {
             success ? (
               <section>
@@ -109,8 +115,6 @@ const Signin = ({setAuth}) => {
             ) :(
                 <section>
             <p ref={errRef} className={errMsg ? 'err-msg' : 'off-screen'}>{errMsg}</p>
-            <h1>Login</h1>
-
              <form onSubmit={handleSubmit}>
                  <label htmlFor="username">
                      UserName
@@ -184,6 +188,7 @@ const Signin = ({setAuth}) => {
             )
         }
     </div>
+   </>
   )
 }
 

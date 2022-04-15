@@ -7,14 +7,22 @@ export const ModalSingleUser = () => {
   const [user,setUser]  = useState({});
   const [loading,setLoading] = useState(true);
   const { id } = useParams();
-  console.log(id);  
+    
 
   useEffect(()=>{
-      axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
-      .then(response=>{
-          setUser(response.data)
-      })
-      .finally(()=>setLoading(false))
+     const user = JSON.parse(localStorage.getItem('Users'));
+
+     if(user !== null && Object.keys(user).length !== 0 && user.id === Number(id))
+     {
+        setUser(user);
+        setLoading(false);
+     }else{
+        axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
+        .then(response=>{
+            setUser(response.data)
+        })
+        .finally(()=>setLoading(false))
+     }
   },[id]);
   return (
     <div className="container">

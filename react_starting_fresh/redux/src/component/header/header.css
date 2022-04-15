@@ -11,7 +11,7 @@
 nav {
     display:grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
+    grid-gap: 15px;
 
 }
 nav .nav-sign{
@@ -21,7 +21,6 @@ nav .nav-sign{
 nav .nav-log{
     text-align: center !important;
     padding: 12px 28px !important;
-    border:none !important; 
 }
 nav a:hover{
     opacity:0.4;
@@ -31,10 +30,22 @@ nav a , a.active{
     font-weight: bold;
     color:white;
     display:block;
-    border: 1px solid whitesmoke;
+    
     padding:8px;
+}
+nav a.active{
+    border: 1px solid whitesmoke;
 }
 
 .linked{
     text-decoration: none;
+}
+
+.user-name{
+    margin-left:40px;
+    padding:20px;
+}
+.logged-out{
+    display:flex;
+    justify-content: flex-end;
 }

@@ -20,8 +20,24 @@ export const UpdateUser = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   console.log(id);
+  
+  let user_details = JSON.parse(localStorage.getItem('Users'));
+  
   useEffect(()=>{
- 
+    
+    
+     if(user_details !== null && Object.keys(user_details).length !== 0 &&  user_details.id === Number(id))
+     {
+        console.log(user_details.company);
+        setUser(user_details)
+        setUsername(user_details.username);
+        setEmail(user_details.email);
+        setPhone(user_details.phone);
+        setCompany(user_details.company.name);
+        setCatchPhrase(user_details.company.catchPhrase);
+        setBs(user_details.company.bs);
+        setLoading(false);
+     }else{
       axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
       .then(response=>{
           console.log(response.data.phone);
@@ -34,6 +50,7 @@ export const UpdateUser = () => {
           setBs(response.data.company.bs);
       })
       .finally(()=>setLoading(false))
+     }
       
       
 },[id]);
