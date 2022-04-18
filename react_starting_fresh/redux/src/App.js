@@ -21,12 +21,13 @@ function App() {
     <div className="App">
       <Header  isAuthenticated={isAuthenticated} setAuth = {setAuth}/>
       <Routes>
-          {isAuthenticated ? <Route path="users" element={<UserContainerHooks/>}/> :<Route path='/' element ={<Homepage/>}/>}
+          <Route path='/' element ={<Homepage isAuthenticated={isAuthenticated}/>}/> 
+          {isAuthenticated ? <Route path="/users" element={<UserContainerHooks/>}/> :<Route path='/' element ={<Homepage/>}/>}
           <Route path='users/:id' element ={<ModalSingleUser/>}/>
           <Route path="users/update/:id" element={<UpdateUser/>}/>
           <Route path="users/add" element={<AddUser/>}/>
-          <Route path='/signup' element={<Signup/>}/>
-          <Route path='/signin' element={<Signin setAuth={setAuth}/>} />
+          <Route path='signup' element={<Signup/>}/>
+          <Route path='signin' element={<Signin setAuth={setAuth}/>} />
         </Routes>
      {/* <UserContainerHooks/> */}
      <Footer/>

@@ -18,9 +18,13 @@ function Modal({show,data,onHide}) {
                             <b>Company Name:</b>&nbsp;&nbsp;&nbsp;&nbsp;<span>{data.company.name}</span><br/>
                         </div>
                         <div className="img-data">
-                            <img 
-                            src={`https://robohash.org/${data.id}?set=set5&size=180x180`} 
-                            alt="monsters"/>
+                           {
+                               data.id > 10 ?  
+                               <img src={data.imgfile} alt="monsters" width="180" height="180" style={{backgroundSize : "cover"}}/>:  
+                               <img 
+                               src={`https://robohash.org/${data.id}?set=set5&size=180x180`} 
+                               alt="monsters"/>
+                           }
                         </div>
                   </div>
                   <button type="button" onClick={onHide} className="modal-btn show">

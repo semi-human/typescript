@@ -22,7 +22,7 @@ export const UpdateUser = () => {
   console.log(id);
   
   let user_details = JSON.parse(localStorage.getItem('Users'));
-  
+  let newUser = JSON.parse(localStorage.getItem('newUsers'));
   useEffect(()=>{
     
     
@@ -38,18 +38,36 @@ export const UpdateUser = () => {
         setBs(user_details.company.bs);
         setLoading(false);
      }else{
-      axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
-      .then(response=>{
-          console.log(response.data.phone);
-          setUser(response.data)
-          setUsername(response.data.username);
-          setEmail(response.data.email);
-          setPhone(response.data.phone);
-          setCompany(response.data.company.name);
-          setCatchPhrase(response.data.company.catchPhrase);
-          setBs(response.data.company.bs);
-      })
-      .finally(()=>setLoading(false))
+       if(Number(id) > 10)
+       {
+          newUser.forEach(user=>{
+            if(user.id === Number(id))
+            {
+              setUser(user)
+              setUsername(user.username);
+              setEmail(user.email);
+              setPhone(user.phone);
+              setCompany(user.company.name);
+              setCatchPhrase(user.company.catchPhrase);
+              setBs(user.company.bs);
+              setLoading(false);
+            }
+          })
+       }else{
+        axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
+        .then(response=>{
+            console.log(response.data.phone);
+            setUser(response.data)
+            setUsername(response.data.username);
+            setEmail(response.data.email);
+            setPhone(response.data.phone);
+            setCompany(response.data.company.name);
+            setCatchPhrase(response.data.company.catchPhrase);
+            setBs(response.data.company.bs);
+        })
+        .finally(()=>setLoading(false))
+       }
+      
      }
       
       
@@ -89,20 +107,29 @@ const handleSubmit =(e) =>{
   console.log(user);
   if(username && email && phone && company && catchPhrase && bs)
   {
-    fetch(`https://jsonplaceholder.typicode.com/users/${user.id}`, {
-    method: 'PUT',
-    body: JSON.stringify(user),
-    headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-    },
-  })
-    .then((response) => response.json())
-    .then((json) => console.log(json));
-    localStorage.setItem("Users", JSON.stringify(user));
-    toast.success('Successfully  Updated!',{position:toast.POSITION.TOP_CENTER  , autoClose:false})
-    setTimeout(()=>{
-      navigate('/users');
-    },2000)
+    if(Number(id) > 10)
+    {
+      localStorage.setItem("Users", JSON.stringify(user));
+      toast.success('Successfully  Updated!',{position:toast.POSITION.TOP_CENTER  , autoClose:false})
+      setTimeout(()=>{
+        navigate('/users');
+      },2000)
+    }else{
+      fetch(`https://jsonplaceholder.typicode.com/users/${user.id}`, {
+      method: 'PUT',
+      body: JSON.stringify(user),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json));
+      localStorage.setItem("Users", JSON.stringify(user));
+      toast.success('Successfully  Updated!',{position:toast.POSITION.TOP_CENTER  , autoClose:false})
+      setTimeout(()=>{
+        navigate('/users');
+      },2000)
+    }
   }else{
     toast.warn('Please fill up the fields to update',{position:toast.POSITION.TOP_CENTER});
     

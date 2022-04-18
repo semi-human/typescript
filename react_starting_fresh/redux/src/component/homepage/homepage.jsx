@@ -2,7 +2,7 @@ import React from 'react'
 import './homepage.css';
 import { Link } from 'react-router-dom';
 import { GiBandit } from "react-icons/gi";
-export const Homepage = () => {
+export const Homepage = ({isAuthenticated}) => {
   return (
     <div class="front">
       <div class="body-container">
@@ -13,14 +13,25 @@ export const Homepage = () => {
               <h2>Take your JavaScript development up a notch</h2>
               <h5>Get started today for free, or step up to npm Pro to enjoy a premium JavaScript development experience, with features like private packages</h5>
             </div>
-            <div className="buttons">
-               <Link to='./signup'>
-                <button type="button" className='sign-in'>Sign Up</button>
-              </Link>
-              <Link to='./signin'>
-                <button type="button" className='sign-up'>Login</button>
-              </Link>
-            </div>
+            {isAuthenticated ? (
+              <div className="buttons">
+                <Link to='./signup'>
+                  <button type="button" className='sign-in'>Learn more</button>
+                </Link>
+                <Link to='./signin'>
+                  <button type="button" className='sign-up'>Pricing</button>
+                </Link>
+              </div>
+            ) : (
+              <div className="buttons">
+                  <Link to='./signup'>
+                    <button type="button" className='sign-in'>Sign Up</button>
+                  </Link>
+                  <Link to='./signin'>
+                    <button type="button" className='sign-up'>Login</button>
+                  </Link>
+              </div>
+            )}
          </div>
 
 

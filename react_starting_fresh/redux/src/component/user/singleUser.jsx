@@ -19,7 +19,11 @@ function SingleUser({user,onDelete}) {
   return (
     <>
     <div className='card-container'>
-        <img src={`https://robohash.org/${user.id}?set=set5&size=180x180`} alt="monsters"/>
+       {
+          user.id > 10 ? 
+          <img src={user.imgfile} alt="monsters" width="300" height="330" style={{backgroundSize : "cover", margin:"auto",padding:0}}/>: 
+          <img src={`https://robohash.org/${user.id}?set=set5&size=180x180`} alt="monsters"/>
+       }
         <h2>{user.name}</h2>
         <h5>{user.email}</h5>
         <button 

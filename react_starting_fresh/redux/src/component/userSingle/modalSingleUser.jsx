@@ -7,15 +7,26 @@ export const ModalSingleUser = () => {
   const [user,setUser]  = useState({});
   const [loading,setLoading] = useState(true);
   const { id } = useParams();
-    
 
   useEffect(()=>{
      const user = JSON.parse(localStorage.getItem('Users'));
-
+     
      if(user !== null && Object.keys(user).length !== 0 && user.id === Number(id))
      {
         setUser(user);
         setLoading(false);
+     }else if(Number(id) > 10){
+         
+         const newUser = JSON.parse(localStorage.getItem('newUsers'));
+         newUser.forEach(userNew =>{
+            console.log(userNew.imgfile)
+            if(userNew.id === Number(id))
+            {
+                setUser(userNew);
+            }
+         })
+         console.log('hello');
+         setLoading(false);
      }else{
         axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
         .then(response=>{
@@ -24,6 +35,7 @@ export const ModalSingleUser = () => {
         .finally(()=>setLoading(false))
      }
   },[id]);
+  
   return (
     <div className="container">
         <h1>Full Details of User {id}</h1>
@@ -67,7 +79,11 @@ export const ModalSingleUser = () => {
                         <span>{user.company.bs}</span><br/><br/>
                     </div>
                     <div className="img-final">
-                   <img src={`https://robohash.org/${user.id}?set=set5&size=180x180`} alt="monsters"/>
+                        {
+                            user.id > 10 ?  
+                            <img src={user.imgfile} alt="monsters" width="180" height="180" style={{backgroundSize : "cover"}}/>: 
+                            <img src={`https://robohash.org/${user.id}?set=set5&size=180x180`} alt="monsters"/>
+                        }
                    </div>
                    </div>
 
