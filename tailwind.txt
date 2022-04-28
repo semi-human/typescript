@@ -1,0 +1,152 @@
+<!--
+  Welcome to Tailwind Play, the official Tailwind CSS playground!
+
+  Everything here works just like it does when you're running Tailwind locally
+  with a real build pipeline. You can customize your config file, use features
+  like `@apply`, or even add third-party plugins.
+
+  Feel free to play with this example if you're just learning, or trash it and
+  start from scratch if you know enough to be dangerous. Have fun!
+-->
+<div  class="bg-no-repeat bg-cover bg-fixed w-full h-full" style="background-image:url('https://th.bing.com/th/id/R.16ec2418af13d9525c425de7468ef26d?rik=vDfZkZAL6pJnnw&pid=ImgRaw&r=0');">
+  <h1 class="font-mono text-3xl hover:font-bold italic font-extralight text-center">Hello World</h1>
+  <p class="font-serif text-xs">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat neque corrupti culpa fuga eaque quo, aperiam, sequi esse non vel architecto molestiae in nostrum possimus repudiandae, dicta aspernatur maxime autem.</p>
+  <p class="font-serif text-justify">He is <span class="ordinal font-semibold">1st</span> in class</p>
+  <!-- font variant -->
+  <p class="diagonal-fractions">1/2</p>
+  <p class="stacked-fractions">3/4</p>
+  <p class="proportional-nums">1234567890</p>
+  <p class="oldstyle-nums">1234567890101112131415</p>
+  <!--line height-->
+  <p class="tracking-widest truncate">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquid perspiciatis praesentium quasi, numquam blanditiis aliquam! Corrupti et deleniti, necessitatibus praesentium id qui a, assumenda veritatis ratione labore minima illo recusandae.</p>
+  <p class="tracking-tighter ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed exercitationem rerum quam ducimus necessitatibus harum id. Vitae ipsa est tenetur in? Vero consequuntur minus magnam ad molestiae esse dignissimos quisquam.</p>
+  <p class="tracking-[1.5em]">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel a commodi amet repudiandae aperiam maxime provident, doloribus autem vitae velit qui error et quis tempore quisquam, dolor incidunt molestiae unde?</p>
+
+  <!--line height -->
+  <p class="leading-8">Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus labore voluptates laboriosam. Maxime eius libero itaque sapiente unde molestias. Delectus nemo explicabo aut laudantium excepturi sint? Nemo laborum necessitatibus sed?</p>
+  <!--based on letter size -->
+  <p class="font-mono font-bold text-2xl text-center lowercase">Based on letter size</p>
+  <p class="leading-relaxed indent-20">Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quae blanditiis odio voluptas eum aspernatur vitae voluptate, eius doloribus omnis commodi dignissimos debitis nihil et quas laboriosam iste optio. Atque!</p>
+
+  <!--list-->
+  <p class="font-mono font-bold text-2xl text-center capitalize">List is not working</p>
+  <ol class="list-decimal">
+    <li>Mangoes</li>
+    <li>Pomegranate</li>
+  </ol>
+  <ul class="list-[upper-roman]">
+    <li>asd</li>
+    <li>asd</li>
+    <li>asd</li>
+  </ul>
+  <!--text color -->
+  <p class="text-slate-900/40 underline decoration-slate-800 decoration-double decoration-0 underline-offset-4">This is a test for opacity</p>
+  <p class="text-emerald-900/20 line-through decoration-sky-900">This will be hard to read</p>
+  <p class="text-[#4312ab] underline decoration-red-500 decoration-dotted decoration-4">This is custom</p>
+  <div class="bg-black">
+    <p class="text-transparent ">This is transparent.<span class="text-white uppercase">There is text here</span></p>
+  </div>
+
+  <!--background-->
+  <button type="button" class="bg-indigo-500">Primary Button</button>
+  <div class="h-24 bg-gradient-to-r from-yellow-300 to-blue-600"></div>
+  <h1 class="bg-orange-700 text-white w-max py-4 px-6 mt-4 mx-auto">Padding</h1>
+</div>
+
+
+<!--flex and grid -->
+<!--
+  Welcome to Tailwind Play, the official Tailwind CSS playground!
+
+  Everything here works just like it does when you're running Tailwind locally
+  with a real build pipeline. You can customize your config file, use features
+  like `@apply`, or even add third-party plugins.
+
+  Feel free to play with this example if you're just learning, or trash it and
+  start from scratch if you know enough to be dangerous. Have fun!
+-->
+ <h2 class="text-center text-3xl font-bold mt-3">Flexbox</h2>
+<div class="flex flex-wrap gap-4 h-20">
+ <div class="bg-blue-700 text-white h-25 order-2 flex-auto text-center basis-1/6">Flex item 1</div>
+ <div class="bg-slate-600 text-white h-25 order-3 flex-auto text-center">Flex item 2</div>
+ <div class="bg-green-700 text-white h-25 order-1 flex-auto text-center">Flex item 3</div>
+ <div class="bg-green-700 text-white h-25 flex-auto order-last text-center">Flex item 4</div>
+</div>
+
+<p class="border-2 border-emerald-900 rounded-full border-double p-6 my-5 mx-1 outline outline-blue-600 outline-4 outline-offset-4 ring-2 ring-red-200 ring-offset-2 hover:border-dotted hover:border-8 md:text-center"> Hello</p>
+
+<div class="flex flex-col-reverse divide-y divide-y-reverse divide-blue-700 hover:divide-purple-200 hover:divide-dashed">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+</div>
+
+<button type="button" class=" mx-3 my-5 rounded-md p-3 shadow-lg shadow-sky-600/50 opacity-90 bg-blue-200 blur-[0.42px] drop-shadow-lg " > <p class="opacity-100 text-center font-mono font-semibold mix-blend-hard-light">Primary Button</p> </button>
+
+<table class="border-2 border-collapse border-gray-500 mx-4 my-3 w-11/12 table-auto">
+  <thead>
+    <tr>
+    <th class="border border-gray-500">Names</th>
+    <th class="border border-gray-500">Age</th>
+    <th class="border border-gray-500">Occupation</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="border border-gray-500 text-center">Rahim</td>
+       <td class="border border-gray-500 text-center">20</td>
+        <td class="border border-gray-500 text-center">Student</td>
+    </tr>
+    <tr>
+      <td class="border border-gray-500 text-center">Kahim</td>
+       <td class="border border-gray-500 text-center">22</td>
+        <td class="border border-gray-500 text-center">Student</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="flex flex-row flex-nowrap">
+  <div class="basis-1/4 border-2 text-center">1</div>
+  <div class="basis-1/4 border-2 text-center">2</div>
+  <div class="basis-3/4 border-2 text-center">3</div>
+   <div class="basis-3/4 border-2 text-center">4</div>
+</div>
+
+<div class="flex flex-row  hover:flex-col">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+</div>
+
+<div class="grid grid-cols-4 gap-2 hover:grid-cols-2">
+  <div class="border border-gray-500 text-center">1</div>
+  <div class="border border-gray-500 text-center">2</div>
+  <div class="border border-gray-500 text-center">3</div>
+  <div class="border border-gray-500 text-center">4</div>
+  <div class="border border-gray-500 text-center">5</div>
+  <div class="border border-gray-500 text-center">6</div>
+  <div class="border border-gray-500 text-center">7</div>
+  <div class="border border-gray-500 text-center">8</div>
+</div>
+
+<div class="grid grid-rows-4 grid-flow-col gap-2 mt-5">
+  <div class="border border-gray-500 text-center">1</div>
+  <div class="border border-gray-500 text-center">2</div>
+  <div class="border border-gray-500 text-center">3</div>
+  <div class="border border-gray-500 text-center">4</div>
+  <div class="border border-gray-500 text-center">5</div>
+  <div class="border border-gray-500 text-center">6</div>
+  <div class="border border-gray-500 text-center">7</div>
+  <div class="border border-gray-500 text-center">8</div>
+</div>
+
+<div class="grid grid-cols-4 grid-flow-row justify-items-stretch gap-2 mt-5 ">
+  <div class="border border-gray-500 text-center px-8 py-1 justify-self-center">1</div>
+  <div class="border border-gray-500 text-center px-8 py-1">2</div>
+  <div class="border border-gray-500 text-center px-8 py-1">3</div>
+  <div class="border border-gray-500 text-center px-8 py-1">4</div>
+  <div class="border border-gray-500 text-center px-8 py-1">5</div>
+  <div class="border border-gray-500 text-center px-8 py-1">6</div>
+  <div class="border border-gray-500 text-center px-8 py-1">7</div>
+  <div class="border border-gray-500 text-center px-8 py-1">8</div>
+</div>
