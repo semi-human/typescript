@@ -1,0 +1,38 @@
+*{
+  padding:0;
+  margin:0;
+  box-sizing: border-box;
+
+}
+
+body{
+  background-color:#ffffff;
+}
+
+.background{
+  background-color:#f6f9fc;
+  padding:50px 0;
+}
+
+.container{
+  max-width: 90%;
+  margin:auto;
+}
+.c_flex{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+a{
+  text-decoration: none;
+  color:#000;
+}
+li{
+  list-style: none;
+}
+.uppercae{
+  text-transform: uppercase;
+}
+.capitalize{
+  text-transform: capitalize;
+}
