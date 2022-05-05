@@ -30,6 +30,7 @@ function UserContainerHooks() {
         newUserList.forEach(user=>{
           if(storedUser.id !== user.id)
             userBefore.push(user);
+            users.push(user);
         })
       }
     console.log(userBefore);
@@ -56,7 +57,7 @@ function UserContainerHooks() {
   
   // console.log(storedUser);
   const [delUsers,setDelUsers] = React.useState(usersAll);
-  const filteredUsers = usersAll.filter(user=>(
+  const filteredUsers = users.filter(user=>(
     user.name.toLowerCase().includes(searchField.toLowerCase())
   ))
 
@@ -101,7 +102,6 @@ function UserContainerHooks() {
                 
             </div>
         }
-        <Footer/>
        </>)
       }
 

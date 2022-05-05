@@ -57,7 +57,7 @@ export const Homepage = ({isAuthenticated}) => {
          <div className="fourth-part">
            <h2>Gratefully serving everyone from solo devs to the Fortune 500</h2>
          </div>
-         <hr className='ending'/>
+       
       </div>
     </div>
   )

@@ -84,6 +84,7 @@ const Signup = () => {
   const saveDataToLocal = (data) =>{
       let oldData = localStorage.getItem('registeredUser');
       console.log(oldData);
+      
       if(oldData === null)
       {
           let oldData = [];
@@ -97,11 +98,13 @@ const Signup = () => {
             setPwd('');
             setMatchPwd('');
         },4000)
-          toast.success('Registereds Successfully!',{position:toast.POSITION.TOP_CENTER});
+          toast.success('Registered Successfully!',{position:toast.POSITION.TOP_CENTER});
       }else{
-          console.log('Hello from arr');
+          
+        console.log('Hello from arr');
         let oldArr = JSON.parse(localStorage.getItem('registeredUser'));
         let found = false;
+        
         oldArr.some(user=>(
             user.email === data.email ? found = true : ''  
         ))
@@ -137,8 +140,11 @@ const Signup = () => {
           return;
       }
       console.log(user,email,pwd);
+       let currentDate = new Date();
+       let dateStr = currentDate.toString();
+       let msec = Date.parse(dateStr);
       setIsDisplay(true);
-      saveDataToLocal({user:user , email:email,pwd:pwd})
+      saveDataToLocal({user:user , email:email,pwd:pwd,time:msec})
 
       
   }

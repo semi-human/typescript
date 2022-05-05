@@ -4,7 +4,7 @@ import { faCheck , faTimes , faInfoCircle } from "@fortawesome/free-solid-svg-ic
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { GiAnubis } from "react-icons/gi";
+import { GiAnubis} from "react-icons/gi";
 import './signin.css';
 
 
@@ -60,6 +60,32 @@ const Signin = ({setAuth}) => {
       setErrMsg('');
   },[user,pwd])
   
+  //session
+  useEffect(()=>{
+      let sessionExpired = JSON.parse(localStorage.getItem("Expired"));
+      console.log(sessionExpired);
+      let userName = localStorage.getItem("UserName");
+      console.log(userName);
+      if(sessionExpired)
+      {
+        const userData = JSON.parse(localStorage.getItem('registeredUser'));
+        if(userData !== null)
+        {
+            let newTime = Date.parse(new Date().toString());
+            userData.some(user=>{
+                if(user.user === userName.toLowerCase() &&  (newTime - user.time) > (600 * 1000))
+                {
+                    console.log("Hello from Sabu");
+                    user.time = Date.parse(new Date().toString());
+                    console.log(user);
+                    localStorage.setItem('Expired',JSON.stringify(false));
+                }
+                localStorage.setItem('registeredUser',JSON.stringify(userData));
+                return '';
+            })
+        }
+      }
+  },[])
   const getDataFromLocal = (data) =>{
       const userData = JSON.parse(localStorage.getItem('registeredUser'));
       let found = false;

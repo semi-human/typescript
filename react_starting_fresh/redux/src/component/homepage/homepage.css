@@ -22,6 +22,7 @@
     grid-template-columns: 1fr 1fr;
     grid-gap:20px;
     margin-bottom: 90px;
+
 }
 .buttons .sign-in{
     display:inline-block;
@@ -43,6 +44,10 @@
     padding:5px;
 }
 
+.buttons :hover{
+    transform: scale(1.03);
+    transition: transform ease 1s;
+}
 
 .second-part{
     display:flex;

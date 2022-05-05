@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React from 'react'
 import SearchBox from '../search/searchBox';
 import './header.css';
 import {NavLink ,Link} from 'react-router-dom';

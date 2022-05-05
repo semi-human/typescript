@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React , {useState, useEffect} from 'react';
 import './App.css';
 import { Route, Routes  } from 'react-router-dom';
 // import UserContainer from './component/fetchData/userContainer';
@@ -11,9 +11,62 @@ import Signup from './component/signup/signup';
 import Signin from './component/signin/signin';
 import Header from './component/header/header';
 import Footer from './component/footer/footer';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from "react-router-dom";
+toast.configure();
 function App() {
   const [isAuthenticated,setIsAuthenticated] = useState(JSON.parse(localStorage.getItem("Auth")));
 
+  const navigate = useNavigate();
+  
+  const checkValidity = () =>{
+    const userName = localStorage.getItem("UserName");
+    console.log(userName);
+    const userData = JSON.parse(localStorage.getItem('registeredUser'));
+    console.log(userData);
+    if(userData !== null)
+    {
+      let futureTime = new Date();
+      let futureTimeStr = futureTime.toString();
+      let futureTimeMsecs = Date.parse(futureTimeStr);
+      console.log(futureTimeMsecs);
+      console.log('Hello from time');
+      
+      userData.some(user=>{
+        if(user.user === userName && (futureTimeMsecs - user.time) <= (300 * 1000))
+        {
+          console.log('Hellos') 
+          setAuth(true);
+           localStorage.setItem('Auth',JSON.stringify(true));
+           localStorage.setItem('Expired',JSON.stringify(false));
+        }else{
+          console.log('Good bye')
+          if((futureTimeMsecs - user.time) > (600 * 1000))
+          {
+              toast.error("Session expired! Please login again.",{position:toast.POSITION.TOP_CENTER});
+              setAuth(false);
+              localStorage.setItem('Auth',JSON.stringify(false));
+              localStorage.setItem('Expired',JSON.stringify(true));
+             setTimeout(()=>{
+                navigate('signin');
+             },2000)
+              
+              
+          }
+        }
+        return '';
+      })
+    }
+  }
+  useEffect(()=>{
+      setTimeout(()=>{
+        if(isAuthenticated)
+        {
+          checkValidity();
+        }
+      },1000)
+  },[])
   const setAuth = (value) =>{
     setIsAuthenticated(value)
   }
