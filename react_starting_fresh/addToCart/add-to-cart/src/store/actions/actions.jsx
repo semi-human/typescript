@@ -15,3 +15,10 @@ export const delItem = (product) =>{
     }
 }
 
+export const delItemBtn = (product) =>{
+    return {
+        type:ACTION_TYPES.DEL_ITEM_BTN,
+        payload:product
+    }
+}
+

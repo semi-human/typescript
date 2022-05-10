@@ -23,10 +23,11 @@ const cartReducer = (state = cart,action) =>{
                     }
                 ]
             }
-        case ACTION_TYPES.DEL_ITEM:
 
+        case ACTION_TYPES.DEL_ITEM:
+            const product1 = action.payload;
             //check if product exists
-            const exist1 = state.find(item => item.id === product.id);
+            const exist1 = state.find(item => item.id === product1.id);
             if(exist1.qty === 1)
             {
                 return state.filter(item => item.id !== exist1.id 
@@ -36,6 +37,13 @@ const cartReducer = (state = cart,action) =>{
                     item.id === exist1.id ? {...item, qty:item.qty - 1} : item)
                
             }
+
+        case ACTION_TYPES.DEL_ITEM_BTN:
+            const product2 = action.payload;
+            const exist2 = state.find(item => item.id === product2.id);
+            console.log(exist2);
+            return state.filter(item => item.id !== exist2.id);
+
         default:
             return state;
 
